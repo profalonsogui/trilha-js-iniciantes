@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>05 · Funções — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-basico">Básico</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 05 de 12</p>
+    <h1>Funções</h1>
+    <p class="lead">Uma função é um bloco de código com nome que você escreve uma vez e usa quantas vezes quiser.</p>
+
+    <h2>1. Declarando e chamando uma função</h2>
+    <p>
+      <strong>Parâmetros</strong> são os valores que a função recebe; <code>return</code> devolve o resultado.
+    </p>
+    <div id="ex-declaracao"></div>
+
+    <h2>2. Três jeitos de escrever</h2>
+    <div class="tabela-wrap">
+      <table>
+        <tr><th>Forma</th><th>Quando usar</th></tr>
+        <tr><td>Declaração <code>function nome() {}</code></td><td>Funções "principais" do código.</td></tr>
+        <tr><td>Expressão <code>const nome = function() {}</code></td><td>Guardar a função numa variável.</td></tr>
+        <tr><td>Arrow <code>const nome = () =&gt; {}</code></td><td>Funções curtas e callbacks (muito comum).</td></tr>
+      </table>
+    </div>
+    <div id="ex-formas"></div>
+
+    <h2>3. Valores padrão e <code>...rest</code></h2>
+    <p>Dê um valor padrão ao parâmetro com <code>=</code>. Use <code>...nome</code> para receber "quantos argumentos vierem".</p>
+    <div id="ex-padrao"></div>
+
+    <h2>4. Escopo: quem enxerga o quê</h2>
+    <p>Variáveis criadas dentro de uma função (ou de um bloco <code>{ }</code> com <code>let/const</code>) só existem ali dentro.</p>
+    <div id="ex-escopo"></div>
+
+    <h2>5. Callbacks e closures</h2>
+    <p>
+      Em JavaScript, funções são valores: dá para passar uma função como argumento (<strong>callback</strong>)
+      e uma função pode "lembrar" as variáveis de onde nasceu (<strong>closure</strong>).
+    </p>
+    <div id="ex-callback"></div>
+    <div id="ex-closure"></div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li><code>function nome(params) { return valor; }</code></li>
+        <li>Arrow: <code>(a, b) =&gt; a + b</code> — retorno implícito quando não há <code>{ }</code>.</li>
+        <li>Parâmetros podem ter valor padrão; <code>...rest</code> junta o que sobrar.</li>
+        <li>Variáveis de dentro da função não vazam para fora (escopo).</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>Crie uma função <code>ehPar(n)</code> que retorna <code>true</code> se o número for par, e uma versão arrow dela.</p>
+      <details>
+        <summary>Ver uma solução</summary>
+        <pre class="codigo estatico js"><code>function ehPar(n) {
+  return n % 2 === 0;
+}
+const ehParArrow = (n) => n % 2 === 0;
+
+console.log(ehPar(4), ehParArrow(7)); // true false</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../04-lacos-de-repeticao/index.html">← Anterior: Laços de repetição</a>
+      <a href="../06-arrays/index.html">Próximo: Arrays →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 05</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

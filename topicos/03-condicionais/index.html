@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>03 · Condicionais — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-basico">Básico</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 03 de 12</p>
+    <h1>Condicionais: if / else, switch e ternário</h1>
+    <p class="lead">Condicionais fazem o programa tomar decisões: "se isso, faça aquilo; senão, faça outra coisa".</p>
+
+    <h2>1. <code>if</code> / <code>else if</code> / <code>else</code></h2>
+    <p>
+      O JavaScript testa as condições de cima para baixo e executa <strong>apenas o primeiro bloco</strong> verdadeiro.
+    </p>
+    <div id="ex-if"></div>
+
+    <h3>Na prática: digite uma nota</h3>
+    <p>Esse exemplo já lê um campo da página (você vai estudar isso no tópico de DOM — por enquanto, só observe o <code>if</code>).</p>
+    <div class="palco">
+      <label for="campo-nota">Nota (0 a 10): </label>
+      <input type="number" id="campo-nota" min="0" max="10" step="0.5" value="6">
+      <button type="button" class="btn" id="btn-nota">Verificar</button>
+      <p class="resultado" id="resultado-nota"></p>
+    </div>
+    <div id="ex-if-interativo"></div>
+
+    <h2>2. <code>switch</code></h2>
+    <p>Ótimo quando você compara <strong>uma</strong> variável com vários valores exatos. Não esqueça do <code>break</code>!</p>
+    <div id="ex-switch"></div>
+
+    <h2>3. Operador ternário</h2>
+    <p>Um <code>if/else</code> de uma linha só, ideal para escolher entre dois valores: <code>condição ? seVerdadeiro : seFalso</code>.</p>
+    <div id="ex-ternario"></div>
+
+    <h2>4. Testando valores "truthy" e "falsy"</h2>
+    <p>Dentro do <code>if</code> você não precisa comparar com <code>true</code>: o próprio valor já é avaliado.</p>
+    <div id="ex-truthy"></div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li><code>if / else if / else</code>: só um bloco executa.</li>
+        <li><code>switch</code>: vários valores exatos de uma mesma variável (use <code>break</code>).</li>
+        <li>Ternário: <code>cond ? a : b</code> para escolhas simples.</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>
+        Dada a variável <code>hora</code> (0 a 23), mostre "Bom dia" (até 11), "Boa tarde" (12 a 17) ou "Boa noite" (a partir de 18).
+      </p>
+      <details>
+        <summary>Ver uma solução</summary>
+        <pre class="codigo estatico js"><code>const hora = 15;
+if (hora < 12) {
+  console.log('Bom dia');
+} else if (hora < 18) {
+  console.log('Boa tarde');
+} else {
+  console.log('Boa noite');
+}</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../02-operadores/index.html">← Anterior: Operadores</a>
+      <a href="../04-lacos-de-repeticao/index.html">Próximo: Laços de repetição →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 03</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

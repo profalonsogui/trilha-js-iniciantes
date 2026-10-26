@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>08 · DOM — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-inter">Intermediário</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 08 de 12</p>
+    <h1>DOM — manipulando a página</h1>
+    <p class="lead">
+      O <strong>DOM</strong> (Document Object Model) é a página HTML transformada em objetos que o JavaScript consegue ler e alterar.
+    </p>
+
+    <div class="caixa info">
+      <strong class="titulo">🌳 Pense numa árvore</strong>
+      <code>document</code> → <code>html</code> → <code>body</code> → <code>h1</code>, <code>p</code>, <code>ul</code> → <code>li</code>…
+      Cada tag vira um "nó" que você pode selecionar, mudar, criar ou remover.
+    </div>
+
+    <h2>O palco desta página</h2>
+    <p>Os exemplos abaixo mexem nesta área. Use <strong>↺ Restaurar palco</strong> para voltar ao estado inicial.</p>
+    <div class="palco" data-restaurar>
+      <h3 id="titulo-dom" class="titulo-dom">Título original</h3>
+      <p class="texto-dom">Parágrafo 1</p>
+      <p class="texto-dom">Parágrafo 2</p>
+      <ul id="lista-dom">
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ul>
+    </div>
+
+    <h2>1. Selecionando elementos</h2>
+    <div class="tabela-wrap">
+      <table>
+        <tr><th>Método</th><th>Retorna</th></tr>
+        <tr><td><code>getElementById('id')</code></td><td>Um elemento (pelo id)</td></tr>
+        <tr><td><code>querySelector('.classe')</code></td><td>O <strong>primeiro</strong> que combina com o seletor CSS</td></tr>
+        <tr><td><code>querySelectorAll('.classe')</code></td><td><strong>Todos</strong> que combinam (NodeList)</td></tr>
+      </table>
+    </div>
+    <div id="ex-selecionar"></div>
+
+    <h2>2. Alterando texto, estilo e atributos</h2>
+    <ul>
+      <li><code>textContent</code> → troca o texto (seguro).</li>
+      <li><code>innerHTML</code> → troca o HTML interno (cuidado com dados vindos do usuário!).</li>
+      <li><code>classList.add / remove / toggle</code> → mexe nas classes CSS.</li>
+      <li><code>setAttribute</code> / <code>style</code> → atributos e estilos.</li>
+    </ul>
+    <div id="ex-alterar"></div>
+
+    <h2>3. Criando e removendo elementos</h2>
+    <div id="ex-criar"></div>
+    <div id="ex-remover"></div>
+
+    <div class="caixa atencao">
+      <strong class="titulo">⚠️ Segurança</strong>
+      Nunca use <code>innerHTML</code> com texto digitado por usuários (risco de XSS). Prefira <code>textContent</code>
+      ou crie os elementos com <code>createElement</code>.
+    </div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li>Selecione com <code>getElementById</code>, <code>querySelector</code> e <code>querySelectorAll</code>.</li>
+        <li>Altere com <code>textContent</code>, <code>classList</code>, <code>style</code> e <code>setAttribute</code>.</li>
+        <li>Crie com <code>createElement</code> + <code>appendChild</code>; remova com <code>.remove()</code>.</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>
+        Faça um laço que adiciona 3 itens ("Item A", "Item B", "Item C") na lista do palco usando <code>createElement</code>.
+      </p>
+      <details>
+        <summary>Ver uma solução</summary>
+        <pre class="codigo estatico js"><code>const lista = document.getElementById('lista-dom');
+for (const letra of ['A', 'B', 'C']) {
+  const li = document.createElement('li');
+  li.textContent = 'Item ' + letra;
+  lista.appendChild(li);
+}</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../07-objetos-e-json/index.html">← Anterior: Objetos e JSON</a>
+      <a href="../09-eventos/index.html">Próximo: Eventos →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 08</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

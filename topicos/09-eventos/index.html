@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>09 · Eventos — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-inter">Intermediário</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 09 de 12</p>
+    <h1>Eventos</h1>
+    <p class="lead">
+      Evento é "algo que acontece": um clique, uma tecla digitada, um formulário enviado.
+      Com <code>addEventListener</code> você diz: <em>"quando isso acontecer, rode esta função"</em>.
+    </p>
+
+    <div class="caixa dica">
+      <strong class="titulo">⚡ Exemplos interativos</strong>
+      Nesta página, os exemplos já rodam sozinhos e controlam os palcos. É só interagir com eles!
+    </div>
+
+    <h2>1. Clique</h2>
+    <div class="palco">
+      <button type="button" class="btn" id="btn-contar">Clique em mim</button>
+      Cliques: <strong id="contador">0</strong>
+    </div>
+    <div id="ex-click"></div>
+
+    <h2>2. Digitação (<code>input</code>) e o objeto <code>evento</code></h2>
+    <p>
+      A função recebe um objeto <code>evento</code> com detalhes: <code>evento.target</code> é o elemento que disparou,
+      <code>evento.key</code> é a tecla pressionada etc.
+    </p>
+    <div class="palco">
+      <label for="campo-nome">Digite seu nome: </label>
+      <input type="text" id="campo-nome" placeholder="Ana">
+      <p>Olá, <strong id="eco">…</strong>!</p>
+      <label for="campo-tecla">Pressione teclas: </label>
+      <input type="text" id="campo-tecla" placeholder="aperte algo">
+      <p>Última tecla: <strong id="tecla-out">—</strong></p>
+    </div>
+    <div id="ex-input"></div>
+
+    <h2>3. Formulário (<code>submit</code>) e <code>preventDefault</code></h2>
+    <p>Por padrão, enviar um formulário recarrega a página. <code>evento.preventDefault()</code> cancela isso para você tratar tudo com JS.</p>
+    <div class="palco">
+      <form id="form-login">
+        <input type="text" name="email" placeholder="seu@email.com" autocomplete="off">
+        <button type="submit" class="btn">Entrar</button>
+      </form>
+      <p class="resultado" id="msg-form"></p>
+    </div>
+    <div id="ex-submit"></div>
+
+    <h2>4. Delegação de eventos (intermediário)</h2>
+    <p>
+      Em vez de colocar um ouvinte em cada <code>&lt;li&gt;</code>, coloque <strong>um só na lista</strong> e descubra quem foi clicado
+      com <code>evento.target</code>. Funciona até para itens criados depois!
+    </p>
+    <div class="palco">
+      <ul id="lista-cliques">
+        <li>Clique para riscar</li>
+        <li>Outro item</li>
+      </ul>
+      <button type="button" class="btn btn-sec" id="btn-add-item">+ Adicionar item</button>
+    </div>
+    <div id="ex-delegacao"></div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li><code>elemento.addEventListener('evento', funcao)</code> — jeito recomendado.</li>
+        <li>Eventos comuns: <code>click</code>, <code>input</code>, <code>change</code>, <code>submit</code>, <code>keydown</code>, <code>DOMContentLoaded</code>.</li>
+        <li><code>preventDefault()</code> cancela o comportamento padrão (ex.: recarregar no submit).</li>
+        <li>Delegação: um ouvinte no "pai" + <code>evento.target.closest(...)</code>.</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>Faça um botão que alterna entre os textos "Ligar" e "Desligar" a cada clique.</p>
+      <details>
+        <summary>Ver uma solução</summary>
+        <pre class="codigo estatico js"><code>const botao = document.getElementById('meu-botao');
+let ligado = false;
+
+botao.addEventListener('click', () => {
+  ligado = !ligado;
+  botao.textContent = ligado ? 'Desligar' : 'Ligar';
+});</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../08-dom/index.html">← Anterior: DOM</a>
+      <a href="../10-javascript-vs-jquery/index.html">Próximo: JavaScript vs jQuery →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 09</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

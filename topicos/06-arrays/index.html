@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>06 · Arrays — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-inter">Intermediário</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 06 de 12</p>
+    <h1>Arrays (listas)</h1>
+    <p class="lead">Um array guarda vários valores em ordem. Cada posição tem um índice, começando do <strong>zero</strong>.</p>
+
+    <h2>1. Criar, acessar e modificar</h2>
+    <div class="tabela-wrap">
+      <table>
+        <tr><th>Método</th><th>O que faz</th></tr>
+        <tr><td><code>push(x)</code> / <code>pop()</code></td><td>Adiciona / remove no <strong>fim</strong></td></tr>
+        <tr><td><code>unshift(x)</code> / <code>shift()</code></td><td>Adiciona / remove no <strong>início</strong></td></tr>
+        <tr><td><code>includes(x)</code> / <code>indexOf(x)</code></td><td>Verifica se existe / descobre a posição</td></tr>
+        <tr><td><code>join(sep)</code></td><td>Junta tudo em um texto</td></tr>
+      </table>
+    </div>
+    <div id="ex-basico"></div>
+
+    <h2>2. Os "quatro grandes": <code>map</code>, <code>filter</code>, <code>find</code> e <code>reduce</code></h2>
+    <p>
+      Em vez de escrever um <code>for</code> para tudo, estes métodos expressam a intenção:
+    </p>
+    <ul>
+      <li><code>map</code> → transforma cada item e devolve um <strong>novo array</strong>.</li>
+      <li><code>filter</code> → mantém só os itens que passam no teste.</li>
+      <li><code>find</code> → devolve o <strong>primeiro</strong> item que passa no teste.</li>
+      <li><code>reduce</code> → "resume" tudo em um único valor (soma, total…).</li>
+    </ul>
+    <div id="ex-map-filter"></div>
+
+    <h2>3. Array de objetos (o caso mais comum no dia a dia)</h2>
+    <div id="ex-lista-objetos"></div>
+
+    <h2>4. Copiar, juntar e desestruturar com <code>...</code></h2>
+    <div id="ex-spread"></div>
+
+    <div class="caixa atencao">
+      <strong class="titulo">⚠️ Cuidado: <code>sort()</code> altera o array original</strong>
+      Por isso, no exemplo acima, copiamos com <code>[...produtos]</code> antes de ordenar.
+    </div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li>Índices começam em 0; <code>length</code> dá o tamanho.</li>
+        <li><code>push/pop</code> (fim) e <code>unshift/shift</code> (início).</li>
+        <li><code>map</code> transforma · <code>filter</code> filtra · <code>find</code> procura · <code>reduce</code> resume.</li>
+        <li><code>[...a, ...b]</code> copia e junta arrays.</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>
+        Dado <code>const notas = [4, 8, 6.5, 9, 3];</code>, calcule a <strong>média</strong> e crie um array só com as notas
+        aprovadas (≥ 6).
+      </p>
+      <details>
+        <summary>Ver uma solução</summary>
+        <pre class="codigo estatico js"><code>const notas = [4, 8, 6.5, 9, 3];
+const media = notas.reduce((total, n) => total + n, 0) / notas.length;
+const aprovadas = notas.filter(n => n >= 6);
+console.log(media.toFixed(1), aprovadas); // 6.1 [8, 6.5, 9]</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../05-funcoes/index.html">← Anterior: Funções</a>
+      <a href="../07-objetos-e-json/index.html">Próximo: Objetos e JSON →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 06</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

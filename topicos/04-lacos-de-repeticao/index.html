@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>04 · Laços de repetição — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-basico">Básico</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 04 de 12</p>
+    <h1>Laços de repetição: for, while e for...of</h1>
+    <p class="lead">Laços repetem um bloco de código sem você precisar copiar e colar.</p>
+
+    <h2>1. <code>for</code> — quando você sabe quantas vezes repetir</h2>
+    <p>Três partes: <code>(início; condição; passo)</code>.</p>
+    <div id="ex-for"></div>
+
+    <h3>Exemplo clássico: tabuada</h3>
+    <div id="ex-tabuada"></div>
+
+    <h2>2. <code>while</code> e <code>do...while</code> — repete enquanto a condição for verdadeira</h2>
+    <div class="caixa atencao">
+      <strong class="titulo">⚠️ Cuidado com loop infinito</strong>
+      Se a condição nunca ficar falsa, a página trava. Sempre garanta que algo dentro do laço muda a condição.
+    </div>
+    <div id="ex-while"></div>
+
+    <h2>3. <code>for...of</code> e <code>for...in</code> — percorrendo coleções</h2>
+    <ul>
+      <li><code>for...of</code> → percorre os <strong>valores</strong> de um array.</li>
+      <li><code>for...in</code> → percorre as <strong>chaves</strong> de um objeto.</li>
+    </ul>
+    <div id="ex-forof"></div>
+
+    <h2>4. <code>break</code> e <code>continue</code></h2>
+    <ul>
+      <li><code>continue</code> → pula para a próxima volta.</li>
+      <li><code>break</code> → sai do laço de vez.</li>
+    </ul>
+    <div id="ex-break"></div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li><code>for</code>: número de voltas conhecido.</li>
+        <li><code>while</code>: repete até a condição ficar falsa.</li>
+        <li><code>for...of</code>: valores de arrays; <code>for...in</code>: chaves de objetos.</li>
+        <li><code>break</code> para tudo; <code>continue</code> pula uma volta.</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>Some todos os números de 1 a 100 usando um <code>for</code> e mostre o total (resposta esperada: 5050).</p>
+      <details>
+        <summary>Ver uma solução</summary>
+        <pre class="codigo estatico js"><code>let total = 0;
+for (let i = 1; i <= 100; i++) {
+  total += i;
+}
+console.log(total); // 5050</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../03-condicionais/index.html">← Anterior: Condicionais</a>
+      <a href="../05-funcoes/index.html">Próximo: Funções →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 04</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

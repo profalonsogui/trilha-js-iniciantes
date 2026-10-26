@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>11 · Assincronismo — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-inter">Intermediário</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 11 de 12</p>
+    <h1>Assincronismo: timers, Promises, fetch e async/await</h1>
+    <p class="lead">
+      Algumas tarefas demoram (esperar um timer, buscar dados na internet). O JavaScript não trava a página esperando:
+      ele "deixa agendado" e continua o resto do código.
+    </p>
+
+    <h2>1. Timers: <code>setTimeout</code> e <code>setInterval</code></h2>
+    <p>Repare na ordem em que as mensagens aparecem — a 2ª vem antes da 3ª, mesmo estando "depois" no código.</p>
+    <div id="ex-timeout"></div>
+    <div id="ex-interval"></div>
+
+    <h2>2. Promises</h2>
+    <p>
+      Uma <strong>Promise</strong> representa um valor que ainda vai chegar. Ela termina de duas formas:
+      <code>resolve</code> (deu certo → <code>.then</code>) ou <code>reject</code> (deu erro → <code>.catch</code>).
+    </p>
+    <div id="ex-promise"></div>
+
+    <h2>3. <code>async</code> / <code>await</code></h2>
+    <p>
+      A forma moderna e mais legível de usar Promises: o código parece sequencial.
+      <code>await</code> só pode ser usado dentro de uma função <code>async</code>.
+    </p>
+    <div id="ex-async"></div>
+
+    <h2>4. <code>fetch</code> — buscando dados de uma API</h2>
+    <p>
+      <code>fetch</code> devolve uma Promise. Use <code>try/catch</code> para tratar falhas
+      e confira <code>resposta.ok</code> (um erro 404 <em>não</em> cai no catch sozinho!).
+    </p>
+    <div id="ex-fetch"></div>
+
+    <h2>5. <code>Promise.all</code> — várias tarefas ao mesmo tempo</h2>
+    <div id="ex-all"></div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li><code>setTimeout</code> roda uma vez depois de X ms; <code>setInterval</code> repete (pare com <code>clearInterval</code>).</li>
+        <li>Promise: <code>.then()</code> sucesso · <code>.catch()</code> erro · <code>.finally()</code> sempre.</li>
+        <li><code>async/await</code> + <code>try/catch</code> deixa o código assíncrono parecer síncrono.</li>
+        <li><code>Promise.all([...])</code> espera várias tarefas em paralelo.</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>Crie uma função <code>async</code> que espera 1 segundo, mostra "Pronto!" e retorna o número 42.</p>
+      <details>
+        <summary>Ver uma solução</summary>
+        <pre class="codigo estatico js"><code>const esperar = (ms) => new Promise(r => setTimeout(r, ms));
+
+async function tarefa() {
+  await esperar(1000);
+  console.log('Pronto!');
+  return 42;
+}
+
+tarefa().then(valor => console.log('Retornou', valor));</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../10-javascript-vs-jquery/index.html">← Anterior: JavaScript vs jQuery</a>
+      <a href="../12-mini-projeto-tarefas/index.html">Próximo: Mini-projeto →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 11</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

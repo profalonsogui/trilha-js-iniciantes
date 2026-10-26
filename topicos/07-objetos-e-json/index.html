@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>07 · Objetos e JSON — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-inter">Intermediário</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 07 de 12</p>
+    <h1>Objetos e JSON</h1>
+    <p class="lead">Um objeto agrupa informações relacionadas em pares <code>chave: valor</code> — como uma ficha de cadastro.</p>
+
+    <h2>1. Criar, ler e alterar</h2>
+    <p>Acesse com ponto (<code>pessoa.nome</code>) ou colchetes (<code>pessoa['nome']</code>) — os colchetes servem quando a chave está numa variável.</p>
+    <div id="ex-objeto"></div>
+
+    <h2>2. Desestruturação e spread</h2>
+    <p>Atalhos para "tirar" propriedades de um objeto e para criar cópias atualizadas.</p>
+    <div id="ex-desestruturacao"></div>
+
+    <h2>3. <code>Object.keys</code>, <code>values</code> e <code>entries</code></h2>
+    <div id="ex-object-metodos"></div>
+
+    <h2>4. Encadeamento opcional <code>?.</code></h2>
+    <p>Evita o erro clássico <em>"Cannot read properties of undefined"</em> quando uma parte do objeto pode não existir.</p>
+    <div id="ex-opcional"></div>
+
+    <h2>5. JSON: objeto &harr; texto</h2>
+    <p>
+      JSON é o formato de texto usado para trocar dados com APIs e guardar coisas no navegador.
+      <code>JSON.stringify</code> transforma objeto em texto; <code>JSON.parse</code> faz o caminho inverso.
+    </p>
+    <div id="ex-json"></div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li>Objeto = <code>{ chave: valor }</code>; métodos são funções dentro do objeto.</li>
+        <li><code>const { a, b } = obj</code> extrai; <code>{ ...obj, a: 1 }</code> copia com mudanças.</li>
+        <li><code>obj?.x?.y</code> não quebra se algo no caminho não existir.</li>
+        <li><code>JSON.stringify</code> / <code>JSON.parse</code> convertem objeto ⇄ texto.</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>
+        Crie um objeto <code>carro</code> com <code>marca</code>, <code>ano</code> e um método <code>descricao()</code> que retorna
+        <em>"Fiat (2020)"</em>. Depois converta o objeto em JSON e mostre no console.
+      </p>
+      <details>
+        <summary>Ver uma solução</summary>
+        <pre class="codigo estatico js"><code>const carro = {
+  marca: 'Fiat',
+  ano: 2020,
+  descricao() {
+    return `${this.marca} (${this.ano})`;
+  },
+};
+console.log(carro.descricao());
+console.log(JSON.stringify(carro)); // métodos não entram no JSON</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../06-arrays/index.html">← Anterior: Arrays</a>
+      <a href="../08-dom/index.html">Próximo: DOM →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 07</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

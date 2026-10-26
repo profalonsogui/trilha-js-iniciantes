@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>10 · JavaScript vs jQuery — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    /* Estilos só desta página (animação do exemplo 5) */
+    .caixa-anim {
+      padding: 12px 16px; background: color-mix(in srgb, var(--acento) 35%, var(--card));
+      border-radius: 10px; max-height: 120px; overflow: hidden;
+      transition: opacity .4s, max-height .4s, padding .4s;
+    }
+    .caixa-anim.escondida { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; }
+    .realce { background: color-mix(in srgb, var(--acento) 55%, transparent); border-radius: 4px; padding: 0 .3em; }
+  </style>
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-comp">Comparativo</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 10 de 12</p>
+    <h1>JavaScript puro vs jQuery</h1>
+    <p class="lead">
+      O <strong>jQuery</strong> é uma biblioteca criada em 2006 para deixar o JavaScript do navegador mais curto e compatível.
+      Hoje o JavaScript moderno faz quase tudo sozinho — mas você ainda vai encontrar jQuery em muito código existente.
+    </p>
+
+    <div class="caixa info">
+      <strong class="titulo">ℹ️ Como o jQuery entra na página</strong>
+      Basta carregar o arquivo <em>antes</em> do seu script. Neste projeto ele está em <code>assets/js/jquery.min.js</code>:
+      <pre class="codigo estatico" style="margin-top:10px"><code>&lt;script src="../../assets/js/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;
+
+&lt;!-- ou via CDN: --&gt;
+&lt;script src="https://code.jquery.com/jquery-3.7.1.min.js"&gt;&lt;/script&gt;</code></pre>
+      Depois disso, a função <code>$</code> (ou <code>jQuery</code>) fica disponível: <code>$('seletor')</code> seleciona elementos
+      e devolve um <em>objeto jQuery</em> com métodos encadeáveis.
+    </div>
+
+    <h2>Tabela rápida de equivalências</h2>
+    <div class="tabela-wrap">
+      <table>
+        <tr><th>Tarefa</th><th>JavaScript puro</th><th>jQuery</th></tr>
+        <tr>
+          <td>Esperar a página carregar</td>
+          <td><code>document.addEventListener('DOMContentLoaded', fn)</code></td>
+          <td><code>$(document).ready(fn)</code> ou <code>$(fn)</code></td>
+        </tr>
+        <tr>
+          <td>Selecionar um elemento</td>
+          <td><code>document.querySelector('.x')</code></td>
+          <td><code>$('.x')</code></td>
+        </tr>
+        <tr>
+          <td>Selecionar vários</td>
+          <td><code>document.querySelectorAll('.x')</code> + <code>forEach</code></td>
+          <td><code>$('.x')</code> (já aplica em todos)</td>
+        </tr>
+        <tr>
+          <td>Trocar texto</td>
+          <td><code>el.textContent = 'oi'</code></td>
+          <td><code>$(el).text('oi')</code></td>
+        </tr>
+        <tr>
+          <td>Trocar HTML</td>
+          <td><code>el.innerHTML = '&lt;b&gt;oi&lt;/b&gt;'</code></td>
+          <td><code>$(el).html('&lt;b&gt;oi&lt;/b&gt;')</code></td>
+        </tr>
+        <tr>
+          <td>Ler/escrever valor de campo</td>
+          <td><code>input.value</code></td>
+          <td><code>$('input').val()</code></td>
+        </tr>
+        <tr>
+          <td>Classes</td>
+          <td><code>el.classList.add('a')</code> / <code>toggle</code></td>
+          <td><code>$(el).addClass('a')</code> / <code>toggleClass</code></td>
+        </tr>
+        <tr>
+          <td>Estilo</td>
+          <td><code>el.style.color = 'red'</code></td>
+          <td><code>$(el).css('color', 'red')</code></td>
+        </tr>
+        <tr>
+          <td>Evento</td>
+          <td><code>el.addEventListener('click', fn)</code></td>
+          <td><code>$(el).on('click', fn)</code></td>
+        </tr>
+        <tr>
+          <td>Criar e inserir</td>
+          <td><code>createElement</code> + <code>appendChild</code></td>
+          <td><code>$(pai).append('&lt;li&gt;…&lt;/li&gt;')</code></td>
+        </tr>
+        <tr>
+          <td>Remover</td>
+          <td><code>el.remove()</code></td>
+          <td><code>$(el).remove()</code></td>
+        </tr>
+        <tr>
+          <td>Efeitos (mostrar/esconder)</td>
+          <td>CSS (<code>transition</code> + classe)</td>
+          <td><code>.show()</code>, <code>.hide()</code>, <code>.fadeToggle()</code>, <code>.slideToggle()</code></td>
+        </tr>
+        <tr>
+          <td>Requisição HTTP</td>
+          <td><code>fetch(url)</code></td>
+          <td><code>$.ajax()</code>, <code>$.getJSON()</code></td>
+        </tr>
+      </table>
+    </div>
+
+    <h2>Exemplo 1 — Selecionar e alterar</h2>
+    <p>Repare: no jQuery, uma linha afeta <em>todos</em> os elementos encontrados, sem precisar de <code>forEach</code>.</p>
+    <div class="palco" data-restaurar>
+      <h4 class="p1-titulo" style="margin:0 0 6px">Título original</h4>
+      <p class="p1-texto" style="margin:0">Texto original A</p>
+      <p class="p1-texto" style="margin:0">Texto original B</p>
+    </div>
+    <div class="comparar" style="margin-top:14px">
+      <div><h4>🟨 JavaScript puro</h4><div id="ex1-js"></div></div>
+      <div><h4>🟦 jQuery</h4><div id="ex1-jq"></div></div>
+    </div>
+
+    <h2>Exemplo 2 — Classes CSS</h2>
+    <div class="palco" data-restaurar>
+      <p style="margin:0">Clique em executar para <span id="p2-alvo">alternar o realce</span> deste trecho.</p>
+    </div>
+    <div class="comparar" style="margin-top:14px">
+      <div><h4>🟨 JavaScript puro</h4><div id="ex2-js"></div></div>
+      <div><h4>🟦 jQuery</h4><div id="ex2-jq"></div></div>
+    </div>
+
+    <h2>Exemplo 3 — Evento de clique</h2>
+    <p>Os dois já estão ativos: clique em cada botão.</p>
+    <div class="palco">
+      <button type="button" class="btn" id="p3-btn-js">Botão JS puro</button> cliques: <strong id="p3-out-js">0</strong>
+      &nbsp;&nbsp;
+      <button type="button" class="btn" id="p3-btn-jq">Botão jQuery</button> cliques: <strong id="p3-out-jq">0</strong>
+    </div>
+    <div class="comparar" style="margin-top:14px">
+      <div><h4>🟨 JavaScript puro</h4><div id="ex3-js"></div></div>
+      <div><h4>🟦 jQuery</h4><div id="ex3-jq"></div></div>
+    </div>
+
+    <h2>Exemplo 4 — Criar e inserir elementos</h2>
+    <div class="palco" data-restaurar>
+      <ul id="p4-lista"><li>Item inicial</li></ul>
+    </div>
+    <div class="comparar" style="margin-top:14px">
+      <div><h4>🟨 JavaScript puro</h4><div id="ex4-js"></div></div>
+      <div><h4>🟦 jQuery</h4><div id="ex4-jq"></div></div>
+    </div>
+
+    <h2>Exemplo 5 — Efeitos (onde o jQuery brilha)</h2>
+    <p>
+      O jQuery já traz animações prontas. No JS puro, a animação fica no CSS (veja <code>.caixa-anim</code> no <code>&lt;style&gt;</code> desta página)
+      e o JavaScript só troca uma classe.
+    </p>
+    <div class="palco">
+      <div class="caixa-anim" id="p5-caixa-js">📦 Caixa controlada por JS puro + CSS</div>
+      <div style="height:10px"></div>
+      <div class="caixa-anim" id="p5-caixa-jq">📦 Caixa controlada por jQuery (slideToggle)</div>
+    </div>
+    <div class="comparar" style="margin-top:14px">
+      <div><h4>🟨 JavaScript puro</h4><div id="ex5-js"></div></div>
+      <div><h4>🟦 jQuery</h4><div id="ex5-jq"></div></div>
+    </div>
+
+    <h2>Exemplo 6 — Buscar dados de uma API</h2>
+    <p>Precisa de internet. Se estiver offline, o erro aparece na saída (e tudo bem!).</p>
+    <div class="comparar">
+      <div><h4>🟨 JavaScript puro (<code>fetch</code>)</h4><div id="ex6-js"></div></div>
+      <div><h4>🟦 jQuery (<code>$.getJSON</code>)</h4><div id="ex6-jq"></div></div>
+    </div>
+
+    <h2>Então, qual usar?</h2>
+    <div class="tabela-wrap">
+      <table>
+        <tr><th>Situação</th><th>Recomendação</th></tr>
+        <tr><td>Projeto novo</td><td>JavaScript puro (ou um framework como React/Vue). Menos peso e menos dependências.</td></tr>
+        <tr><td>Site antigo / WordPress / plugins que dependem de jQuery</td><td>jQuery continua útil — vale conhecer.</td></tr>
+        <tr><td>Aprendendo agora</td><td>Aprenda <strong>JS puro primeiro</strong>. Quem entende o DOM entende jQuery em minutos.</td></tr>
+      </table>
+    </div>
+
+    <div class="caixa atencao">
+      <strong class="titulo">⚠️ Não misture sem necessidade</strong>
+      Um elemento do DOM <code>el</code> e um objeto jQuery <code>$(el)</code> são <strong>coisas diferentes</strong>:
+      <code>el.textContent</code> funciona no primeiro, <code>$(el).text()</code> no segundo.
+      Para voltar do jQuery ao DOM puro, use <code>$(el)[0]</code> ou <code>$(el).get(0)</code>.
+    </div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li>jQuery = atalhos para o DOM: <code>$('seletor').acao()</code>, com encadeamento.</li>
+        <li>O JS moderno (<code>querySelector</code>, <code>classList</code>, <code>fetch</code>) cobre quase tudo que o jQuery fazia.</li>
+        <li>Conhecer os dois ajuda a ler e dar manutenção em projetos antigos.</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>
+        Reescreva em jQuery: <code>document.querySelectorAll('.item').forEach(el =&gt; el.classList.add('ativo'));</code>
+      </p>
+      <details>
+        <summary>Ver a resposta</summary>
+        <pre class="codigo estatico js"><code>$('.item').addClass('ativo');</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../09-eventos/index.html">← Anterior: Eventos</a>
+      <a href="../11-assincronismo/index.html">Próximo: Assincronismo →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 10</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <!-- jQuery precisa vir ANTES do seu script -->
+  <script src="../../assets/js/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

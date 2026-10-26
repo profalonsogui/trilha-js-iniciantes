@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introdução ao JavaScript — Projeto base</title>
+  <meta name="description" content="Projeto base para aprender JavaScript do básico ao intermediário, com exemplos executáveis e comparação com jQuery.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <span class="marca">⚡ Introdução ao JavaScript</span>
+      <span class="topo-titulo"></span>
+      <a href="#trilha">Trilha</a>
+      <a href="#estrutura">Estrutura</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Aprenda JavaScript na prática</h1>
+      <p class="lead">
+        Do básico ao intermediário, um assunto por vez. Cada tópico tem explicação curta, exemplos que você pode
+        <strong>executar na própria página</strong>, comentários no código e um desafio no final.
+        Também tem um comparativo entre <strong>JavaScript puro e jQuery</strong>.
+      </p>
+      <div class="atalhos">
+        <span>if / else</span><span>for</span><span>function</span><span>arrays</span><span>DOM</span><span>eventos</span><span>jQuery</span><span>fetch</span>
+      </div>
+      <div class="progresso" aria-hidden="true"><i id="barra-progresso"></i></div>
+      <small><span id="texto-progresso">0% concluído</span> · <button type="button" class="btn btn-sec" id="btn-zerar" style="padding:.1em .6em">zerar</button>
+      &nbsp;<span style="color:var(--suave)">(Shift + clique em um cartão marca como concluído)</span></small>
+    </section>
+
+    <div class="caixa dica">
+      <strong class="titulo">💡 Como usar</strong>
+      Não precisa instalar nada: <strong>abra este <code>index.html</code> no navegador</strong> e clique nos tópicos.
+      Aperte <code>F12</code> para abrir o console e testar por conta própria.
+      (Só os exemplos de <code>fetch</code> precisam de internet.)
+    </div>
+
+    <section id="trilha">
+      <div class="secao-nivel">
+        <h2>🟢 Nível básico</h2>
+        <p>Os fundamentos da linguagem</p>
+      </div>
+      <div class="cards">
+        <a class="card" data-topico="01" href="topicos/01-variaveis-e-tipos/index.html">
+          <span class="num">01</span>
+          <h3>Variáveis e tipos</h3>
+          <p>Guardar valores, entender os tipos e converter entre eles.</p>
+          <span class="tags"><code>const</code><code>let</code><code>typeof</code><code>template string</code></span>
+        </a>
+        <a class="card" data-topico="02" href="topicos/02-operadores/index.html">
+          <span class="num">02</span>
+          <h3>Operadores</h3>
+          <p>Contas, comparações e lógica.</p>
+          <span class="tags"><code>===</code><code>&amp;&amp;</code><code>||</code><code>??</code></span>
+        </a>
+        <a class="card" data-topico="03" href="topicos/03-condicionais/index.html">
+          <span class="num">03</span>
+          <h3>Condicionais</h3>
+          <p>Tomar decisões no código.</p>
+          <span class="tags"><code>if / else</code><code>switch</code><code>ternário</code></span>
+        </a>
+        <a class="card" data-topico="04" href="topicos/04-lacos-de-repeticao/index.html">
+          <span class="num">04</span>
+          <h3>Laços de repetição</h3>
+          <p>Repetir tarefas sem copiar e colar.</p>
+          <span class="tags"><code>for</code><code>while</code><code>for...of</code><code>break</code></span>
+        </a>
+        <a class="card" data-topico="05" href="topicos/05-funcoes/index.html">
+          <span class="num">05</span>
+          <h3>Funções</h3>
+          <p>Reaproveitar código, escopo, callbacks e closures.</p>
+          <span class="tags"><code>function</code><code>arrow</code><code>return</code><code>escopo</code></span>
+        </a>
+      </div>
+
+      <div class="secao-nivel">
+        <h2>🟠 Nível intermediário</h2>
+        <p>Dados, página e interação</p>
+      </div>
+      <div class="cards">
+        <a class="card" data-topico="06" href="topicos/06-arrays/index.html">
+          <span class="num">06</span>
+          <h3>Arrays</h3>
+          <p>Listas e os métodos que você mais vai usar.</p>
+          <span class="tags"><code>map</code><code>filter</code><code>reduce</code><code>spread</code></span>
+        </a>
+        <a class="card" data-topico="07" href="topicos/07-objetos-e-json/index.html">
+          <span class="num">07</span>
+          <h3>Objetos e JSON</h3>
+          <p>Agrupar dados, desestruturar e converter para texto.</p>
+          <span class="tags"><code>{ }</code><code>?.</code><code>JSON</code></span>
+        </a>
+        <a class="card" data-topico="08" href="topicos/08-dom/index.html">
+          <span class="num">08</span>
+          <h3>DOM</h3>
+          <p>Ler e alterar a página com JavaScript.</p>
+          <span class="tags"><code>querySelector</code><code>textContent</code><code>createElement</code></span>
+        </a>
+        <a class="card" data-topico="09" href="topicos/09-eventos/index.html">
+          <span class="num">09</span>
+          <h3>Eventos</h3>
+          <p>Reagir a cliques, digitação e formulários.</p>
+          <span class="tags"><code>addEventListener</code><code>submit</code><code>delegação</code></span>
+        </a>
+        <a class="card" data-topico="11" href="topicos/11-assincronismo/index.html">
+          <span class="num">11</span>
+          <h3>Assincronismo</h3>
+          <p>Timers, Promises, fetch e async/await.</p>
+          <span class="tags"><code>setTimeout</code><code>Promise</code><code>fetch</code><code>await</code></span>
+        </a>
+        <a class="card" data-topico="12" href="topicos/12-mini-projeto-tarefas/index.html">
+          <span class="num">12</span>
+          <h3>Mini-projeto: tarefas</h3>
+          <p>Junte tudo num app com localStorage.</p>
+          <span class="tags"><code>DOM</code><code>eventos</code><code>JSON</code><code>localStorage</code></span>
+        </a>
+      </div>
+
+      <div class="secao-nivel">
+        <h2>🟣 Comparativo</h2>
+        <p>JavaScript moderno × biblioteca jQuery</p>
+      </div>
+      <div class="cards">
+        <a class="card" data-topico="10" href="topicos/10-javascript-vs-jquery/index.html">
+          <span class="num">10</span>
+          <h3>JavaScript vs jQuery</h3>
+          <p>Os mesmos exemplos lado a lado: seletores, classes, eventos, efeitos e AJAX.</p>
+          <span class="tags"><code>$('.x')</code><code>.on()</code><code>.slideToggle()</code><code>$.getJSON</code></span>
+        </a>
+      </div>
+      <p style="color:var(--suave);font-size:.9rem">
+        Sugestão de ordem: 01 → 09, depois o 10 (comparativo), e então 11 e 12.
+        Os tópicos 08 e 09 (DOM e eventos) são pré-requisito do 10.
+      </p>
+    </section>
+
+    <section id="estrutura">
+      <h2>📁 Estrutura do projeto</h2>
+      <pre class="estrutura">projeto-introducao-js/
+├── index.html                 ← você está aqui
+├── README.md
+├── assets/
+│   ├── css/style.css          ← estilos compartilhados
+│   └── js/
+│       ├── utils.js           ← mostra código + botão "Executar"
+│       ├── indice.js          ← progresso da página inicial
+│       └── jquery.min.js      ← jQuery 3.7.1 (local, funciona offline)
+└── topicos/
+    ├── 01-variaveis-e-tipos/       index.html + script.js
+    ├── 02-operadores/              index.html + script.js
+    ├── 03-condicionais/            index.html + script.js
+    ├── 04-lacos-de-repeticao/      index.html + script.js
+    ├── 05-funcoes/                 index.html + script.js
+    ├── 06-arrays/                  index.html + script.js
+    ├── 07-objetos-e-json/          index.html + script.js
+    ├── 08-dom/                     index.html + script.js
+    ├── 09-eventos/                 index.html + script.js
+    ├── 10-javascript-vs-jquery/    index.html + script.js
+    ├── 11-assincronismo/           index.html + script.js
+    └── 12-mini-projeto-tarefas/    index.html + script.js</pre>
+      <p>
+        Em cada pasta, o <code>script.js</code> contém o código comentado dos exemplos — é exatamente
+        o que aparece na página e roda ao clicar em <strong>▶ Executar</strong>.
+      </p>
+    </section>
+  </main>
+
+  <footer>Projeto base · Introdução ao JavaScript</footer>
+
+  <script src="assets/js/indice.js"></script>
+</body>
+</html>

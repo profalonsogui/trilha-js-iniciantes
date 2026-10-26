@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>01 · Variáveis e tipos — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-basico">Básico</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 01 de 12</p>
+    <h1>Variáveis e tipos de dados</h1>
+    <p class="lead">Uma variável é uma "caixinha com nome" onde você guarda um valor para usar depois.</p>
+
+    <div class="caixa dica">
+      <strong class="titulo">💡 Como usar esta página</strong>
+      Clique em <strong>▶ Executar</strong> em cada exemplo. O resultado aparece logo abaixo do código.
+      Para experimentar por conta própria, abra o console do navegador com <code>F12</code>.
+    </div>
+
+    <h2>1. Declarando variáveis: <code>const</code>, <code>let</code> e <code>var</code></h2>
+    <p>
+      Use <code>const</code> por padrão. Troque para <code>let</code> só quando o valor realmente precisar mudar.
+      O <code>var</code> é a forma antiga — você vai vê-lo em códigos legados, mas evite em código novo.
+    </p>
+    <div id="ex-declarar"></div>
+
+    <h2>2. Os tipos primitivos</h2>
+    <p>Todo valor em JavaScript tem um tipo. Os principais:</p>
+    <div class="tabela-wrap">
+      <table>
+        <tr><th>Tipo</th><th>Exemplo</th><th>Para quê?</th></tr>
+        <tr><td><code>string</code></td><td><code>'Olá'</code></td><td>Textos</td></tr>
+        <tr><td><code>number</code></td><td><code>42</code>, <code>3.14</code></td><td>Números inteiros e decimais</td></tr>
+        <tr><td><code>boolean</code></td><td><code>true</code> / <code>false</code></td><td>Verdadeiro ou falso</td></tr>
+        <tr><td><code>null</code></td><td><code>null</code></td><td>"Sem valor" de propósito</td></tr>
+        <tr><td><code>undefined</code></td><td><code>undefined</code></td><td>Variável criada, mas sem valor ainda</td></tr>
+      </table>
+    </div>
+    <p>O operador <code>typeof</code> mostra o tipo de um valor:</p>
+    <div id="ex-tipos"></div>
+
+    <h2>3. Convertendo tipos</h2>
+    <p>
+      Valores vindos de formulários chegam como <strong>texto</strong>. Se você precisa fazer conta, converta antes.
+      Cuidado: o <code>+</code> com texto <em>concatena</em> em vez de somar.
+    </p>
+    <div id="ex-conversao"></div>
+
+    <h2>4. Juntando textos com template string</h2>
+    <p>Com crases (<code>`</code>) você escreve variáveis dentro do texto usando <code>${...}</code>. É bem mais limpo que concatenar com <code>+</code>.</p>
+    <div id="ex-template"></div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li><code>const</code> (padrão) · <code>let</code> (quando muda) · evite <code>var</code>.</li>
+        <li>Tipos básicos: string, number, boolean, null, undefined.</li>
+        <li><code>typeof</code> descobre o tipo; <code>Number()</code>, <code>String()</code>, <code>Boolean()</code> convertem.</li>
+        <li>Template string: <code>`Olá, ${nome}`</code>.</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>
+        Crie as variáveis <code>produto</code> (texto), <code>preco</code> (número) e <code>quantidade</code> (número)
+        e mostre no console: <em>"3x Caneta — total R$ 7.50"</em> usando template string e <code>toFixed(2)</code>.
+      </p>
+      <details>
+        <summary>Ver uma solução</summary>
+        <pre class="codigo estatico js"><code>const produto = 'Caneta';
+const preco = 2.5;
+const quantidade = 3;
+console.log(`${quantidade}x ${produto} — total R$ ${(preco * quantidade).toFixed(2)}`);</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <span></span>
+      <a href="../02-operadores/index.html">Próximo: Operadores →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 01</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

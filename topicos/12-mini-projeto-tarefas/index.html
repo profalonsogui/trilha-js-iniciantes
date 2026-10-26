@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>12 · Mini-projeto: lista de tarefas — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    #lista-tarefas { list-style: none; padding: 0; margin: 12px 0; }
+    #lista-tarefas li {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 8px 12px; margin-bottom: 6px; cursor: pointer;
+      border: 1px solid var(--borda); border-radius: 8px; background: var(--bg);
+    }
+    #lista-tarefas li:hover { border-color: var(--acento); }
+    #lista-tarefas .remover {
+      border: 0; background: transparent; color: var(--erro);
+      font-size: 1rem; cursor: pointer; padding: 2px 8px; border-radius: 6px;
+    }
+    #lista-tarefas .remover:hover { background: color-mix(in srgb, var(--erro) 15%, transparent); }
+    #form-tarefa { display: flex; gap: 8px; }
+    #form-tarefa input { flex: 1; }
+    #contagem { color: var(--suave); font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-inter">Intermediário</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 12 de 12</p>
+    <h1>Mini-projeto: lista de tarefas</h1>
+    <p class="lead">
+      Hora de juntar tudo: variáveis, condicionais, funções, arrays, objetos, DOM, eventos e JSON — mais o
+      <code>localStorage</code> para guardar as tarefas no navegador.
+    </p>
+
+    <h2>1. <code>localStorage</code>: guardando dados no navegador</h2>
+    <p>
+      O <code>localStorage</code> guarda pares <code>chave → texto</code> que continuam lá mesmo depois de fechar a página.
+      Como ele só aceita <strong>texto</strong>, usamos <code>JSON.stringify</code> / <code>JSON.parse</code> para objetos e arrays.
+    </p>
+    <div id="ex-storage"></div>
+
+    <h2>2. O app (já funcionando!)</h2>
+    <p>Adicione tarefas, clique para marcar como feita, use ✕ para remover — e recarregue a página: tudo continua salvo.</p>
+    <div class="palco">
+      <form id="form-tarefa">
+        <input type="text" id="campo-tarefa" placeholder="O que precisa ser feito?" autocomplete="off">
+        <button type="submit" class="btn">Adicionar</button>
+      </form>
+      <ul id="lista-tarefas"></ul>
+      <span id="contagem"></span>
+    </div>
+    <div id="app-tarefas"></div>
+
+    <div class="caixa info">
+      <strong class="titulo">🧠 A ideia por trás do código</strong>
+      <ol>
+        <li><strong>Estado</strong>: um array <code>tarefas</code> de objetos <code>{ id, texto, feita }</code> é a "fonte da verdade".</li>
+        <li><strong>renderizar()</strong>: apaga a lista e desenha de novo a partir do array.</li>
+        <li><strong>Eventos</strong> mudam o array, chamam <code>salvar()</code> e <code>renderizar()</code>.</li>
+      </ol>
+      Esse padrão (estado → tela) é a base de frameworks como React e Vue.
+    </div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 O que você usou aqui</strong>
+      <ul>
+        <li>Arrays: <code>push</code>, <code>filter</code>, <code>find</code>, <code>forEach</code></li>
+        <li>Objetos e JSON: <code>{ id, texto, feita }</code>, <code>stringify</code>/<code>parse</code></li>
+        <li>DOM: <code>createElement</code>, <code>textContent</code>, <code>closest</code></li>
+        <li>Eventos: <code>submit</code> + <code>preventDefault</code>, delegação de <code>click</code></li>
+        <li>Funções, condicionais e <code>try/catch</code></li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafios para evoluir o projeto</h3>
+      <ol>
+        <li>Adicione um botão "Limpar concluídas" (dica: <code>tarefas.filter(t =&gt; !t.feita)</code>).</li>
+        <li>Adicione filtros: Todas · Pendentes · Concluídas.</li>
+        <li>Refatore o app usando jQuery e compare com a versão em JS puro (tópico 10).</li>
+        <li>Permita editar o texto de uma tarefa com duplo clique (<code>dblclick</code>).</li>
+      </ol>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../11-assincronismo/index.html">← Anterior: Assincronismo</a>
+      <a href="../../index.html">Voltar ao índice ⟲</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 12</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>02 · Operadores — Introdução ao JavaScript</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-int">
+      <a class="marca" href="../../index.html">⟵ Índice</a>
+      <span class="topo-titulo">Introdução ao JavaScript</span>
+      <span class="badge nivel-basico">Básico</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="trilha">Tópico 02 de 12</p>
+    <h1>Operadores</h1>
+    <p class="lead">Operadores fazem contas, comparam valores e combinam condições.</p>
+
+    <h2>1. Aritméticos e de atribuição</h2>
+    <p>Os de sempre (<code>+ - * /</code>), mais o resto da divisão (<code>%</code>) e a potência (<code>**</code>).</p>
+    <div id="ex-aritmeticos"></div>
+
+    <h2>2. Comparação: <code>==</code> vs <code>===</code></h2>
+    <div class="caixa atencao">
+      <strong class="titulo">⚠️ Regra de ouro</strong>
+      Use sempre <code>===</code> e <code>!==</code>. O <code>==</code> converte tipos "por baixo dos panos" e gera resultados surpreendentes.
+    </div>
+    <div id="ex-comparacao"></div>
+
+    <h2>3. Lógicos: <code>&amp;&amp;</code>, <code>||</code>, <code>!</code> e <code>??</code></h2>
+    <ul>
+      <li><code>&amp;&amp;</code> (E): verdadeiro só se os dois lados forem verdadeiros.</li>
+      <li><code>||</code> (OU): verdadeiro se pelo menos um lado for verdadeiro.</li>
+      <li><code>!</code> (NÃO): inverte o valor.</li>
+      <li><code>??</code> (nulo): usa o valor padrão <em>apenas</em> se for <code>null</code> ou <code>undefined</code>.</li>
+    </ul>
+    <div id="ex-logicos"></div>
+
+    <div class="caixa info">
+      <strong class="titulo">ℹ️ Valores "falsy" (viram falso em testes)</strong>
+      <code>false</code>, <code>0</code>, <code>''</code> (texto vazio), <code>null</code>, <code>undefined</code> e <code>NaN</code>.
+      Todo o resto é "truthy" (vira verdadeiro).
+    </div>
+
+    <div class="caixa resumo">
+      <strong class="titulo">📌 Resumo</strong>
+      <ul>
+        <li><code>%</code> dá o resto; <code>**</code> é potência; <code>+=</code>, <code>++</code> são atalhos.</li>
+        <li>Compare sempre com <code>===</code>.</li>
+        <li><code>&amp;&amp;</code> e <code>||</code> combinam condições; <code>??</code> define padrão para <code>null</code>/<code>undefined</code>.</li>
+      </ul>
+    </div>
+
+    <div class="desafio">
+      <h3>🧪 Desafio</h3>
+      <p>
+        Dado <code>const n = 17;</code>, mostre no console se <code>n</code> é par (use <code>%</code>)
+        e se está entre 10 e 20 (use <code>&amp;&amp;</code>).
+      </p>
+      <details>
+        <summary>Ver uma solução</summary>
+        <pre class="codigo estatico js"><code>const n = 17;
+console.log('É par?', n % 2 === 0);
+console.log('Entre 10 e 20?', n >= 10 && n <= 20);</code></pre>
+      </details>
+    </div>
+
+    <nav class="pagina-nav">
+      <a href="../01-variaveis-e-tipos/index.html">← Anterior: Variáveis e tipos</a>
+      <a href="../03-condicionais/index.html">Próximo: Condicionais →</a>
+    </nav>
+  </main>
+
+  <footer>Introdução ao JavaScript · tópico 02</footer>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
